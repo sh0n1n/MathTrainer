@@ -236,9 +236,13 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdW-SQ-t4T">
                                 <rect key="frame" x="49.999999999999993" y="50" width="86.333333333333314" height="44"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Back">
                                     <fontDescription key="titleFontDescription" type="system" weight="black" pointSize="25"/>
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="baseBackgroundColor" systemColor="systemYellowColor"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <segue destination="Sfp-Vl-Yrj" kind="unwind" unwindAction="unwindActionWithUnwindSegue:" id="UJ4-M5-uOs"/>
@@ -307,6 +311,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="QZX-JF-wFR"/>
+                    <connections>
+                        <outletCollection property="buttonCollection2" destination="nYN-r1-2OX" collectionClass="NSMutableArray" id="F0W-m6-dXg"/>
+                        <outletCollection property="buttonCollection2" destination="VjS-UH-3hZ" collectionClass="NSMutableArray" id="ia4-p7-e7C"/>
+                        <outletCollection property="buttonCollection2" destination="bdW-SQ-t4T" collectionClass="NSMutableArray" id="U1L-wk-HFf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h2z-FG-Cnt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="Sfp-Vl-Yrj" userLabel="Exit" sceneMemberID="exit"/>
