@@ -15,14 +15,24 @@ class ViewController: UIViewController {
     // MARK: - IBOutlets
     @IBOutlet var buttonCollection: [UIButton]!
     
+    @IBOutlet weak var addLabel: UILabel!
+    @IBOutlet weak var subtractLabel: UILabel!
+    @IBOutlet weak var multiplyLabel: UILabel!
+    @IBOutlet weak var divideLabel: UILabel!
+    
     // MARK: - Properties
     private var selectedType: MathTypes = .add
+    
+    var addCounter: Int = 0
+    var divideCounter: Int = 0
+    var multiplyCounter: Int = 0
+    var subtractCounter: Int = 0
     
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureButtons()
+        UpdateCount()
        
     }
     
@@ -51,7 +61,13 @@ class ViewController: UIViewController {
             button.layer.shadowRadius = 4
         }
     }
-
+    
+    private func UpdateCount() {
+        addLabel.text = String(addCounter)
+        subtractLabel.text = String(subtractCounter)
+        multiplyLabel.text = String(multiplyCounter)
+        divideLabel.text = String(divideCounter)
+    }
 
 }
 

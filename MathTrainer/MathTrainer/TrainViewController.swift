@@ -10,10 +10,11 @@ import UIKit
 final class TrainViewController: UIViewController {
     
     // MARK: - IBOutlets
+    @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
-    @IBOutlet var buttonCollection2: [UIButton]!
+    @IBOutlet weak var scoreLabel: UILabel!
     
     // MARK: - Properties
     private var firstNumber = 0
@@ -22,9 +23,10 @@ final class TrainViewController: UIViewController {
     private var count: Int = 0 {
         didSet {
             print("Count: \(count)")
+            scoreLabel.text = "Score: \(count)"
         }
     }
-
+    
     var type: MathTypes = .add {
         didSet {
             switch type {
@@ -52,13 +54,14 @@ final class TrainViewController: UIViewController {
             return firstNumber / secondNumber
         }
     }
-        
+    
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureQuestion()
         configureButtons()
+        configureScore()
         
     }
     // MARK: - IBAActions
@@ -91,10 +94,19 @@ final class TrainViewController: UIViewController {
     
     private func configureQuestion() {
         firstNumber = Int.random(in: 1...1000)
-        secondNumber = Int.random(in: 1...1000)
+        secondNumber = Int.random(in: 1...firstNumber)
+        
+        while firstNumber % secondNumber != 0 {
+            firstNumber = Int.random(in: 1...1000)
+            secondNumber = Int.random(in: 1...firstNumber)
+        }
         
         let question: String = "\(firstNumber) \(sign) \(secondNumber) ="
         questionLabel.text = question
+    }
+    
+    private func configureScore() {
+        scoreLabel.text = "Score: \(count)"
     }
     
     private func check(answer: String, for button: UIButton) {
@@ -111,6 +123,22 @@ final class TrainViewController: UIViewController {
                 self?.configureQuestion()
                 self?.configureButtons()
             }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "unwindSegueToViewController":
+            if let viewController = segue.destination as? ViewController {
+                switch type {
+                case .add: viewController.addCounter = count
+                case .subtract: viewController.subtractCounter = count
+                case .multiply: viewController.multiplyCounter = count
+                case .divide: viewController.divideCounter = count
+                }
+            }
+        default:
+            print("There is no logic for segue by this id")
         }
     }
 }
