@@ -273,6 +273,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="buttonsAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sxI-NJ-Y0y"/>
+                                    <action selector="leftAction:" destination="xjy-0N-bRW" eventType="touchUpInside" id="RFe-MF-Yo1"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VjS-UH-3hZ">
@@ -294,6 +295,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="buttonsAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ci2-U8-Sxt"/>
+                                    <action selector="rightAction:" destination="xjy-0N-bRW" eventType="touchUpInside" id="vL6-vv-bsF"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -312,6 +314,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="QZX-JF-wFR"/>
                     <connections>
+                        <outlet property="leftButton" destination="nYN-r1-2OX" id="aqe-Ei-Jd9"/>
+                        <outlet property="questionLabel" destination="XPF-Sg-D9m" id="3LB-xF-qjM"/>
+                        <outlet property="rightButton" destination="VjS-UH-3hZ" id="zEv-5P-c2M"/>
                         <outletCollection property="buttonCollection2" destination="nYN-r1-2OX" collectionClass="NSMutableArray" id="F0W-m6-dXg"/>
                         <outletCollection property="buttonCollection2" destination="VjS-UH-3hZ" collectionClass="NSMutableArray" id="ia4-p7-e7C"/>
                         <outletCollection property="buttonCollection2" destination="bdW-SQ-t4T" collectionClass="NSMutableArray" id="U1L-wk-HFf"/>
