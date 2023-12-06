@@ -41,7 +41,8 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func unwindAction(unwindSegue: UIStoryboardSegue) {
-        updateCount()
+        guard let trainVC = unwindSegue.source as? TrainViewController else { return }
+        updateCount(with: trainVC.count)
     }
     
     // MARK: - Methods
@@ -60,12 +61,18 @@ class MainViewController: UIViewController {
         }
     }
     
-     private func updateCount() {
-        addLabel.text = String(addCounter)
-        subtractLabel.text = String(subtractCounter)
-        multiplyLabel.text = String(multiplyCounter)
-        divideLabel.text = String(divideCounter)
+    private func updateCount(with count: Int = 0) {
+        let strCount = String(count)
+        switch selectedType {
+        case .add:
+            addLabel.text = strCount
+        case .subtract:
+            subtractLabel.text = strCount
+        case .multiply:
+            multiplyLabel.text = strCount
+        case .divide:
+            divideLabel.text = strCount
+        }
     }
-
 }
 

@@ -20,7 +20,7 @@ final class TrainViewController: UIViewController {
     private var firstNumber = 0
     private var secondNumber = 0
     private var sign: String = ""
-    private var count: Int = 0 {
+    private(set) var count: Int = 0 {
         didSet {
             print("Count: \(count)")
             scoreLabel.text = "Score: \(count)"
@@ -124,22 +124,6 @@ final class TrainViewController: UIViewController {
                 self?.configureQuestion()
                 self?.configureButtons()
             }
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch segue.identifier {
-        case "unwindSegueToViewController":
-            if let viewController = segue.destination as? MainViewController {
-                switch type {
-                case .add: viewController.addCounter = count
-                case .subtract: viewController.subtractCounter = count
-                case .multiply: viewController.multiplyCounter = count
-                case .divide: viewController.divideCounter = count
-                }
-            }
-        default:
-            print("There is no logic for segue by this id")
         }
     }
 }
