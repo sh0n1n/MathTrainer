@@ -4,7 +4,7 @@
 //
 //  Created by Melkor on 11/19/23.
 //
-
+import Foundation
 import UIKit
 
 final class TrainViewController: UIViewController {
@@ -72,6 +72,7 @@ final class TrainViewController: UIViewController {
         check(answer: sender.titleLabel?.text ?? "", for: sender)
     }
     
+    
     // MARK: - Methods
     private func configureButtons() {
         let buttonsArray = [leftButton, rightButton]
@@ -129,7 +130,7 @@ final class TrainViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "unwindSegueToViewController":
-            if let viewController = segue.destination as? ViewController {
+            if let viewController = segue.destination as? MainViewController {
                 switch type {
                 case .add: viewController.addCounter = count
                 case .subtract: viewController.subtractCounter = count

@@ -1,28 +1,26 @@
 //
-//  ViewController.swift
+//  MainViewController.swift
 //  MathTrainer
 //
 //  Created by Melkor on 11/19/23.
 //
-
 import UIKit
 
 enum MathTypes: Int {
     case add, subtract, multiply, divide
 }
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
     // MARK: - IBOutlets
     @IBOutlet var buttonCollection: [UIButton]!
     
-    @IBOutlet weak var addLabel: UILabel!
-    @IBOutlet weak var subtractLabel: UILabel!
-    @IBOutlet weak var multiplyLabel: UILabel!
-    @IBOutlet weak var divideLabel: UILabel!
+    @IBOutlet private weak var addLabel: UILabel!
+    @IBOutlet private weak var subtractLabel: UILabel!
+    @IBOutlet private weak var multiplyLabel: UILabel!
+    @IBOutlet private weak var divideLabel: UILabel!
     
     // MARK: - Properties
     private var selectedType: MathTypes = .add
-    
     var addCounter: Int = 0
     var divideCounter: Int = 0
     var multiplyCounter: Int = 0
@@ -32,12 +30,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureButtons()
-        UpdateCount()
+        updateCount()
        
     }
     
     // MARK: - Actions
-    @IBAction func buttonsAction(_ sender: UIButton) {
+    @IBAction private func buttonsAction(_ sender: UIButton) {
         selectedType = MathTypes(rawValue: sender.tag) ?? .add
         performSegue(withIdentifier: "goToNext", sender: sender)
     }
@@ -62,7 +60,7 @@ class ViewController: UIViewController {
         }
     }
     
-    private func UpdateCount() {
+     private func updateCount() {
         addLabel.text = String(addCounter)
         subtractLabel.text = String(subtractCounter)
         multiplyLabel.text = String(multiplyCounter)
