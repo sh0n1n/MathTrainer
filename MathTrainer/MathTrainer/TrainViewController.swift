@@ -10,11 +10,11 @@ import UIKit
 final class TrainViewController: UIViewController {
     
     // MARK: - IBOutlets
-    @IBOutlet weak var backButton: UIButton!
-    @IBOutlet weak var questionLabel: UILabel!
-    @IBOutlet weak var leftButton: UIButton!
-    @IBOutlet weak var rightButton: UIButton!
-    @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet private weak var backButton: UIButton!
+    @IBOutlet private weak var questionLabel: UILabel!
+    @IBOutlet private weak var leftButton: UIButton!
+    @IBOutlet private weak var rightButton: UIButton!
+    @IBOutlet private weak var scoreLabel: UILabel!
     
     // MARK: - Properties
     private var firstNumber = 0
@@ -65,10 +65,10 @@ final class TrainViewController: UIViewController {
         
     }
     // MARK: - IBAActions
-    @IBAction func leftAction(_ sender: UIButton) {
+    @IBAction private func leftAction(_ sender: UIButton) {
         check(answer: sender.titleLabel?.text ?? "", for: sender)
     }
-    @IBAction func rightAction(_ sender: UIButton) {
+    @IBAction private func rightAction(_ sender: UIButton) {
         check(answer: sender.titleLabel?.text ?? "", for: sender)
     }
     
@@ -118,8 +118,8 @@ final class TrainViewController: UIViewController {
         if isRightAnswer {
             let isSecondAttempt = rightButton.backgroundColor == .red ||
             leftButton.backgroundColor == .red
-            
             count += isSecondAttempt ? 0 : 1
+            
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
                 self?.configureQuestion()
                 self?.configureButtons()

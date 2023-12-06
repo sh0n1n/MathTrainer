@@ -41,7 +41,7 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func unwindAction(unwindSegue: UIStoryboardSegue) {
-        
+        updateCount()
     }
     
     // MARK: - Methods
