@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MathTrainer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="MathTrainer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -215,6 +215,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addLabel" destination="r7T-kF-Uer" id="Yva-1s-yXb"/>
+                        <outlet property="divideLabel" destination="2dD-50-Be1" id="WFI-1l-fJ9"/>
+                        <outlet property="multiplyLabel" destination="OlG-ox-laa" id="3Ii-Sd-nSM"/>
+                        <outlet property="subtractLabel" destination="ytb-3j-jJE" id="fdg-2l-KCN"/>
                         <outletCollection property="buttonCollection" destination="a1T-1u-cqn" collectionClass="NSMutableArray" id="TQZ-WO-k1l"/>
                         <outletCollection property="buttonCollection" destination="FDB-sK-Wo4" collectionClass="NSMutableArray" id="9Cs-76-HIS"/>
                         <outletCollection property="buttonCollection" destination="ITp-gX-3eo" collectionClass="NSMutableArray" id="cnG-Ge-iba"/>
@@ -231,7 +235,7 @@
             <objects>
                 <viewController id="xjy-0N-bRW" customClass="TrainViewController" customModule="MathTrainer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cVP-9t-xZ2">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdW-SQ-t4T">
@@ -298,13 +302,22 @@
                                     <action selector="rightAction:" destination="xjy-0N-bRW" eventType="touchUpInside" id="vL6-vv-bsF"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qiS-JL-9pU">
+                                <rect key="frame" x="275" y="50" width="68" height="30"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="nuU-Fp-jTK"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="qiS-JL-9pU" firstAttribute="top" secondItem="nuU-Fp-jTK" secondAttribute="top" constant="50" id="8mz-iZ-nWn"/>
                             <constraint firstItem="nYN-r1-2OX" firstAttribute="top" secondItem="XPF-Sg-D9m" secondAttribute="bottom" constant="120" id="D0f-1b-cqx"/>
                             <constraint firstItem="VjS-UH-3hZ" firstAttribute="centerY" secondItem="nYN-r1-2OX" secondAttribute="centerY" id="Elm-Jv-wdW"/>
                             <constraint firstItem="nYN-r1-2OX" firstAttribute="centerX" secondItem="cVP-9t-xZ2" secondAttribute="centerX" constant="-60" id="XcP-8M-09d"/>
+                            <constraint firstItem="nuU-Fp-jTK" firstAttribute="trailing" secondItem="qiS-JL-9pU" secondAttribute="trailing" constant="50" id="YCv-sI-3G2"/>
                             <constraint firstItem="bdW-SQ-t4T" firstAttribute="leading" secondItem="cVP-9t-xZ2" secondAttribute="leading" constant="50" id="cXc-d3-YGU"/>
                             <constraint firstItem="VjS-UH-3hZ" firstAttribute="centerX" secondItem="cVP-9t-xZ2" secondAttribute="centerX" constant="60" id="h3j-Y7-NML"/>
                             <constraint firstItem="XPF-Sg-D9m" firstAttribute="centerY" secondItem="cVP-9t-xZ2" secondAttribute="centerY" constant="-30" id="jVo-6F-vq4"/>
@@ -314,12 +327,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="QZX-JF-wFR"/>
                     <connections>
+                        <outlet property="backButton" destination="bdW-SQ-t4T" id="9ak-ax-3wc"/>
                         <outlet property="leftButton" destination="nYN-r1-2OX" id="aqe-Ei-Jd9"/>
                         <outlet property="questionLabel" destination="XPF-Sg-D9m" id="3LB-xF-qjM"/>
                         <outlet property="rightButton" destination="VjS-UH-3hZ" id="zEv-5P-c2M"/>
-                        <outletCollection property="buttonCollection2" destination="nYN-r1-2OX" collectionClass="NSMutableArray" id="F0W-m6-dXg"/>
-                        <outletCollection property="buttonCollection2" destination="VjS-UH-3hZ" collectionClass="NSMutableArray" id="ia4-p7-e7C"/>
-                        <outletCollection property="buttonCollection2" destination="bdW-SQ-t4T" collectionClass="NSMutableArray" id="U1L-wk-HFf"/>
+                        <outlet property="scoreLabel" destination="qiS-JL-9pU" id="DWx-Jb-f4B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h2z-FG-Cnt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

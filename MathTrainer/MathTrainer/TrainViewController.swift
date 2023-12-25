@@ -4,27 +4,29 @@
 //
 //  Created by Melkor on 11/19/23.
 //
-
+import Foundation
 import UIKit
 
 final class TrainViewController: UIViewController {
     
     // MARK: - IBOutlets
-    @IBOutlet weak var questionLabel: UILabel!
-    @IBOutlet weak var leftButton: UIButton!
-    @IBOutlet weak var rightButton: UIButton!
-    @IBOutlet var buttonCollection2: [UIButton]!
+    @IBOutlet private weak var backButton: UIButton!
+    @IBOutlet private weak var questionLabel: UILabel!
+    @IBOutlet private weak var leftButton: UIButton!
+    @IBOutlet private weak var rightButton: UIButton!
+    @IBOutlet private weak var scoreLabel: UILabel!
     
     // MARK: - Properties
     private var firstNumber = 0
     private var secondNumber = 0
     private var sign: String = ""
-    private var count: Int = 0 {
+    private(set) var count: Int = 0 {
         didSet {
             print("Count: \(count)")
+            scoreLabel.text = "Score: \(count)"
         }
     }
-
+    
     var type: MathTypes = .add {
         didSet {
             switch type {
@@ -52,22 +54,24 @@ final class TrainViewController: UIViewController {
             return firstNumber / secondNumber
         }
     }
-        
+    
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureQuestion()
         configureButtons()
+        configureScore()
         
     }
     // MARK: - IBAActions
-    @IBAction func leftAction(_ sender: UIButton) {
+    @IBAction private func leftAction(_ sender: UIButton) {
         check(answer: sender.titleLabel?.text ?? "", for: sender)
     }
-    @IBAction func rightAction(_ sender: UIButton) {
+    @IBAction private func rightAction(_ sender: UIButton) {
         check(answer: sender.titleLabel?.text ?? "", for: sender)
     }
+    
     
     // MARK: - Methods
     private func configureButtons() {
@@ -91,10 +95,19 @@ final class TrainViewController: UIViewController {
     
     private func configureQuestion() {
         firstNumber = Int.random(in: 1...1000)
-        secondNumber = Int.random(in: 1...1000)
+        secondNumber = Int.random(in: 1...firstNumber)
+        
+        while firstNumber % secondNumber != 0 {
+            firstNumber = Int.random(in: 1...1000)
+            secondNumber = Int.random(in: 1...firstNumber)
+        }
         
         let question: String = "\(firstNumber) \(sign) \(secondNumber) ="
         questionLabel.text = question
+    }
+    
+    private func configureScore() {
+        scoreLabel.text = "Score: \(count)"
     }
     
     private func check(answer: String, for button: UIButton) {
@@ -105,8 +118,8 @@ final class TrainViewController: UIViewController {
         if isRightAnswer {
             let isSecondAttempt = rightButton.backgroundColor == .red ||
             leftButton.backgroundColor == .red
-            
             count += isSecondAttempt ? 0 : 1
+            
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
                 self?.configureQuestion()
                 self?.configureButtons()
