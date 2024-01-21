@@ -24,6 +24,7 @@ final class TrainViewController: UIViewController {
         didSet {
             print("Count: \(count)")
             scoreLabel.text = "Score: \(count)"
+            UserDefaults.standard.set(count, forKey: type.key) //saving
         }
     }
     
@@ -62,6 +63,10 @@ final class TrainViewController: UIViewController {
         configureQuestion()
         configureButtons()
         configureScore()
+        
+        if let count = UserDefaults.standard.object(forKey: type.key) as? Int {
+            self.count = count
+        }
         
     }
     // MARK: - IBAActions
@@ -126,4 +131,9 @@ final class TrainViewController: UIViewController {
             }
         }
     }
+}
+
+// Save own storage
+extension UserDefaults {
+    static let container = UserDefaults(suiteName: "container")
 }

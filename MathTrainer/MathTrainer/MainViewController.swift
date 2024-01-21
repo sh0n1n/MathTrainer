@@ -6,8 +6,21 @@
 //
 import UIKit
 
-enum MathTypes: Int {
+enum MathTypes: Int, CaseIterable {
     case add, subtract, multiply, divide
+    
+    var key: String {
+        switch self {
+        case .add:
+            return "addCount"
+        case .subtract:
+            return "subtractCount"
+        case .multiply:
+            return "multiplyCount"
+        case .divide:
+            return "divideCount"
+        }
+    }
 }
 
 class MainViewController: UIViewController {
@@ -40,9 +53,20 @@ class MainViewController: UIViewController {
         performSegue(withIdentifier: "goToNext", sender: sender)
     }
     
+    @IBAction func resetAction(_ sender: Any) {
+        MathTypes.allCases.forEach { type in
+            let key = type.key
+            UserDefaults.standard.removeObject(forKey: key)
+            addLabel.text = "-"
+            subtractLabel.text = "-"
+            multiplyLabel.text = "-"
+            divideLabel.text = "-"
+        }
+    }
+    
+    
     @IBAction func unwindAction(unwindSegue: UIStoryboardSegue) {
-        guard let trainVC = unwindSegue.source as? TrainViewController else { return }
-        updateCount(with: trainVC.count)
+        updateCount()
     }
     
     // MARK: - Methods
@@ -62,16 +86,21 @@ class MainViewController: UIViewController {
     }
     
     private func updateCount(with count: Int = 0) {
-        let strCount = String(count)
-        switch selectedType {
-        case .add:
-            addLabel.text = strCount
-        case .subtract:
-            subtractLabel.text = strCount
-        case .multiply:
-            multiplyLabel.text = strCount
-        case .divide:
-            divideLabel.text = strCount
+        MathTypes.allCases.forEach { type in
+            let key = type.key
+            guard let count = UserDefaults.standard.object(forKey: key) as? Int else { return }
+            let stringValue = String(count)
+            
+            switch type {
+            case .add:
+                addLabel.text = stringValue
+            case .subtract:
+                subtractLabel.text = stringValue
+            case .multiply:
+                multiplyLabel.text = stringValue
+            case .divide:
+                divideLabel.text = stringValue
+            }
         }
     }
 }
