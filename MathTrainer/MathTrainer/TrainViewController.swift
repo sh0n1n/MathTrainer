@@ -130,4 +130,6 @@ final class TrainViewController: UIViewController {
 }
 
 // Save own storage
-
+extension UserDefaults {
+    static let container = UserDefaults(suiteName: "container")
+}
