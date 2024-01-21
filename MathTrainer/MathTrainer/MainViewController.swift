@@ -54,8 +54,7 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func unwindAction(unwindSegue: UIStoryboardSegue) {
-        guard let trainVC = unwindSegue.source as? TrainViewController else { return }
-        updateCount(with: trainVC.count)
+        updateCount()
     }
     
     // MARK: - Methods

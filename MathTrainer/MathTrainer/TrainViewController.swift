@@ -64,6 +64,10 @@ final class TrainViewController: UIViewController {
         configureButtons()
         configureScore()
         
+        if let count = UserDefaults.standard.object(forKey: type.key) as? Int {
+            self.count = count
+        }
+        
     }
     // MARK: - IBAActions
     @IBAction private func leftAction(_ sender: UIButton) {
