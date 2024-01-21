@@ -53,6 +53,18 @@ class MainViewController: UIViewController {
         performSegue(withIdentifier: "goToNext", sender: sender)
     }
     
+    @IBAction func resetAction(_ sender: Any) {
+        MathTypes.allCases.forEach { type in
+            let key = type.key
+            UserDefaults.standard.removeObject(forKey: key)
+            addLabel.text = "-"
+            subtractLabel.text = "-"
+            multiplyLabel.text = "-"
+            divideLabel.text = "-"
+        }
+    }
+    
+    
     @IBAction func unwindAction(unwindSegue: UIStoryboardSegue) {
         updateCount()
     }

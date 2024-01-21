@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -196,15 +196,25 @@
                                     <constraint firstItem="OlG-ox-laa" firstAttribute="top" secondItem="ITp-gX-3eo" secondAttribute="bottom" constant="7" id="xsn-MG-OzX"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bi8-pJ-QF1">
+                                <rect key="frame" x="159" y="753.66666666666663" width="75" height="34.333333333333371"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="RESET"/>
+                                <connections>
+                                    <action selector="resetAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fjw-Bs-RBr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="bi8-pJ-QF1" secondAttribute="bottom" constant="30" id="4c7-Wd-a1S"/>
                             <constraint firstItem="p87-Zm-SeF" firstAttribute="centerY" secondItem="yPj-h6-lmN" secondAttribute="centerY" id="6Gf-pT-Q2T"/>
                             <constraint firstItem="Gaw-nQ-p5Q" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6le-yi-46P"/>
                             <constraint firstItem="JbD-5V-FWf" firstAttribute="centerY" secondItem="lnI-xE-LV8" secondAttribute="centerY" id="SDK-Tz-4Z9"/>
                             <constraint firstItem="JbD-5V-FWf" firstAttribute="centerX" secondItem="p87-Zm-SeF" secondAttribute="centerX" id="SVH-1d-sd6"/>
                             <constraint firstItem="yPj-h6-lmN" firstAttribute="top" secondItem="vlM-Wr-lh3" secondAttribute="bottom" constant="70" id="WFb-qH-rVk"/>
+                            <constraint firstItem="bi8-pJ-QF1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="XTS-17-rst"/>
                             <constraint firstItem="lnI-xE-LV8" firstAttribute="centerX" secondItem="yPj-h6-lmN" secondAttribute="centerX" id="Yj1-LE-VsE"/>
                             <constraint firstItem="vlM-Wr-lh3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gNz-co-c7A"/>
                             <constraint firstItem="p87-Zm-SeF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="60" id="kPN-Y8-NRk"/>
@@ -235,7 +245,7 @@
             <objects>
                 <viewController id="xjy-0N-bRW" customClass="TrainViewController" customModule="MathTrainer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cVP-9t-xZ2">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdW-SQ-t4T">
